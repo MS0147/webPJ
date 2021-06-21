@@ -1,53 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <!-- 문서의 메타정보 작성하는 부분 -->
-    <title>윤동주-자화상</title>
-  </head>
-  <body>
-    <!-- header부분은 윗부분임  -->
-    <header>
-      <h1>자화상-윤동주</h1>
-      <hr size="10" align="left" width=90% noshade="noshade"></hr>
-    </header>
+{% extends 'blog/base.html' %}
 
-
-
-    <!-- section 부분-->
-    <section>
-      <center><h3>자화상</h3>
-      <br><h4>윤동주</h4></center>
-      <br>
-      <hr align="center" width=50%></hr>
-
-      <br>산모퉁이를 돌아 논가 외딴 우물을 홀로 찾아가선 가만히 들여다봅니다.
-      <br>우물 속에는 달이 밝고 구름이 흐르고 하늘이 펼치고 파아란 바람이 불고 가을이 있습니다.
-      <br>그리고 한 사나이가 있습니다.
-      <br>어쩐지 그 사나이가 미워져 돌아갑니다.
-      <br>돌아가다 생각하니 그 사나이가 가엾어집니다. 도로 가 들여다보니 사나이는 그대로 있습니다.
-      <br>다시 그 사나이가 미워져 돌아갑니다.
-      <br>돌아가다 생각하니 그 사나이가 그리워집니다.
-      <br>우물 속에는 달이 밝고 구름이 흐르고 하늘이 펼치고 파아란 바람이 불고 가을이 있고 추억처럼 사나이가 있습니다.
-    </section>
-
-    <aside>
-      <article>
-      <h2>윤동주 시인의 다른 시</h2>
-        <ul>
-        <li>서시</li>
-        <li>자화상</li>
-        <li>눈오는 지도</li>
-        <li>새로운 길</li>
-        <li>길</li>
-        <li>별 헤는 밤</li>
-        <li>쉽게 씌어진 시</li>
-        <li>참회록</li>
-        <li>못 자는 밤</li>
-        <li>비오는 밤</li>
-        <li>소낙비</li>
-        </ul>
-      </article>
-    </aside>
-
-  </body>
-</html>
+{% block content %}
+  {% for post in posts %}
+  <div class="card mb-4">
+    <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+    <div class="card-body">
+      <div class="small text-muted">{{ post.published_date }}</div>
+      <h2 class="card-title h4">{{ post.title }}</h2>
+      <p class="card-text">{{ post.text|linebreaksbr }}</p>
+      <a class="btn btn-primary" href="{% url 'post_detail' pk=post.pk %}">Read more →</a>
+    </div>
+  {% endfor %}
+  </div>
+{% endblock %}
