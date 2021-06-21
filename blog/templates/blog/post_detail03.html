@@ -1,4 +1,6 @@
 {% extends 'blog/base.html' %}
+{% load static %}
+
 ​
 {% block content %}
     <div class="card mb-4">
@@ -7,6 +9,6 @@
         {% endif %}
         <h2 class="card-title h4">{{ post.title }}</h2>
         <p class="card-text">{{ post.text|linebreaksbr }}</p>
-        <img src="{% static "imgFile/butterfly.jpg" %}">
+        <img class="card-img-top" src="{% static 'imgFile/butterfly.jpg' %}" alt="My Image">
     </div>
 {% endblock %}
